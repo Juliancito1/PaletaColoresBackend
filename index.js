@@ -3,6 +3,7 @@ import cors from 'cors'
 import morgan from 'morgan';
 import * as dotenv from 'dotenv';
 import './src/database/dbConnection'
+import coloresRouter from './src/routes/colores.routes'
 dotenv.config();
 
 const app = express();
@@ -17,6 +18,4 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}))
 app.use(morgan('dev'));
 
-app.get('/apicolores', (req,res)=>{
-    res.send('Esto es una prueba de la peticion get')
-})
+app.use("/apicolores",coloresRouter)
